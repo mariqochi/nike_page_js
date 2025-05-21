@@ -1,4 +1,215 @@
 * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+.header {
+  width: 100%;
+  height: 96px;
+  background-color:red !important;
+  position: relative;
+  color: black;
+  transition: background-color 0.3s ease, padding 0.3s ease, color 0.3s ease;
+  z-index: 1000;
+}
+
+/* Fixed Header */
+.fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Utility: add body padding when header is fixed */
+body.with-fixed-header {
+  padding-top: 96px;
+}
+
+/* Light header (default state) */
+.bg-light {
+ background-color: white !important; 
+  color: black !important;
+  padding-top: 24px !important;
+  padding-bottom: 24px !important;
+}
+
+/* Dark header (after scrolling) */
+.bg-dark {
+  background-color: black !important;
+  color: white !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+/* Apply style to children when dark */
+.header.bg-dark .top-header,
+.header.bg-dark .bottom-header {
+  background-color: black !important;
+  color: white !important;
+}
+
+.header.bg-dark .link {
+  color: white !important;
+}
+
+.header.bg-dark .separator {
+  color: gray !important;
+}
+
+.header.bg-dark .search-input {
+  background-color: #333 !important;
+  color: white !important;
+}
+
+.header.bg-dark .search-input::placeholder {
+  color: #ccc !important;
+}
+
+/* === TOP HEADER === */
+.top-header {
+  width: 100%;
+  height: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  background-color: #f5f5f5;
+  transition: background-color 0.3s ease;
+}
+
+/* === BOTTOM HEADER === */
+.bottom-header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  background-color: white;
+  transition: background-color 0.3s ease;
+}
+
+/* === NAVIGATION === */
+
+.left-side {
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  width: 19.2px;
+  height: 18px;
+  margin-left: 2px;
+}
+
+.right-side {
+  display: flex;
+  align-items: center;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  gap: 10px;
+}
+
+.nav-links {
+  display: flex;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.separator {
+  margin: 0 10px;
+  color: gray;
+  transition: color 0.3s ease;
+}
+
+/* === SEARCH === */
+.search {
+  width: 180px;
+  height: 40px;
+  position: relative;
+  border-radius: 50px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+
+.search-input {
+  width: 100%;
+  height: 36px;
+  border: none;
+  outline: none;
+  background-color: #f5f5f5;
+  font-size: 14px;
+  background-image: url("./images/Frame (9).png");
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  background-size: 18px 18px;
+  padding-left: 35px;
+  color: black;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: #aaa;
+  opacity: 1;
+  transition: color 0.3s ease;
+}
+
+/* === OTHER SECTIONS === */
+.left-side-bottom {
+  width: 78px;
+  height: 78px;
+  margin-left: 50px;
+}
+
+.center-side-bottom {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.menu-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-family: Helvetica Neue, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #111111;
+}
+
+.right-side-bottom {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 0;
+}
+
+ 
+ 
+ 
+ /* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -7,7 +218,7 @@
   
   body {
     font-family: "Arial", sans-serif;
-    /*background-color: #ffffff;*/
+    
     margin: 0;
     padding: 0;
   }
@@ -47,7 +258,7 @@
     font-family: "Helvetica Neue", sans-serif;
     font-size: 14px;
     gap: 10px;
-    margin-right: 50px; /*!!! This adds space from the left side */
+    margin-right: 50px; 
   }
   
   .nav-links {
@@ -61,7 +272,7 @@
   }
   
   .separator {
-    margin: 0 10px; /* !!Equal space left and right */
+    margin: 0 10px; 
     color: gray;
   }
   
@@ -69,7 +280,6 @@
     text-decoration: underline;
   }
   
-  /* Bottom Header */
   .bottom-header {
     width: 1440px;
     height: 60px;
@@ -91,6 +301,7 @@
   }
   
   .center-side-bottom {
+    flex:1;
     width: 1211px;
     height: 60px;
     justify-content: space-between;
@@ -110,7 +321,7 @@
     line-height: 21px;
     letter-spacing: 0;
     color: #111111;
-    margin-left: 400px;
+
   }
   
   .link {
@@ -124,7 +335,7 @@
     width: 180px;
     height: 40px;
     position: relative;
-    border-radius: 50px; /* half of height*/
+    border-radius: 50px; 
     right: 0px;
     overflow: hidden;
     border: 1px solid #ccc; 
@@ -159,6 +370,29 @@
     padding-top: 12px;
     padding-bottom: 12px;
   }
+  .header.fixed .bottom-header {
+    background-color: black !important;
+  }
+  
+  .header.fixed .center-side-bottom {
+    background-color: black !important;
+  }
+  
+  .header.fixed .menu-links .link,
+  .header.fixed .search-input {
+    color: white !important;
+    background-color: #333 !important;
+  }
+  
+  .header.fixed .search-input::placeholder {
+    color: #ccc;
+  }
+
+  */
+  
+  /* here end header*/
+
+
   .first-container {
     width: 1344px;
     height: 977px;

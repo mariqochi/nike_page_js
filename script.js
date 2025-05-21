@@ -7,21 +7,26 @@ let allProducts = [];
 let filteredProducts = [];
 let productPerPage = 6;
 let currentPage = 1;
-/*
+
 function handleScroll() {
   if (window.scrollY > 80) {
     header.classList.add("fixed-top", "bg-dark");
     header.classList.remove("bg-light", "py-3");
+    document.body.classList.add("with-fixed-header");
+    
   } else {
     header.classList.remove("fixed-top", "bg-dark");
     header.classList.add("bg-light", "py-3");
+    document.body.classList.remove("with-fixed-header");
   }
 }
 
 window.addEventListener("scroll", handleScroll);
-*/
 
 
+
+
+/*
 const topHeader = document.querySelector(".top-header");
 const bottomHeader = document.querySelector(".bottom-header");
 const centerSide = document.querySelector(".center-side-bottom");
@@ -31,9 +36,12 @@ function handleScroll() {
      
       header.style.position = "fixed";
       header.style.top = "0";
-      header.style.left = "0";
-      header.style.width = "100%";
-      header.style.zIndex = "1000";
+
+        header.style.width = "1440px";
+        header.style.left = "50%";
+        header.style.transform = "translateX(-50%)";
+
+        header.style.zIndex = "1000";
   
       topHeader.style.backgroundColor = "black";
       bottomHeader.style.backgroundColor = "black";
@@ -65,25 +73,39 @@ function handleScroll() {
   }
   
   window.addEventListener("scroll", handleScroll);
+  */
 
 async function fetchProducts() {
   try {
     const response = await fetch("./products.json");
+    
+
     const data = await response.json();
+    /*console.log("📦 Loaded data:", data);*/
     allProducts = data;
     filteredProducts = data; 
     renderPagination();
+    renderProducts(currentPage); //I have added it
   } catch (error) {
     console.error("404 error");
     productContainer.innerHTML = "<div>404 ERROR</div>";
   }
 }
 
+
+fetchProducts(); 
+
+
 function renderProducts(page) {
   productContainer.innerHTML = "";
   const startIndex = (page - 1) * productPerPage;
   const endIndex = startIndex + productPerPage;
   const currentProduct = filteredProducts.slice(startIndex, endIndex);
+
+
+  console.log("📦 Rendering products on page:", page);
+  console.log("👟 Products on this page:", currentProduct);
+  
 
   if (currentProduct.length === 0) {
     productContainer.innerHTML = "<div>No products found.</div>";
@@ -112,6 +134,9 @@ function renderProducts(page) {
     productContainer.appendChild(card);
   });
 }
+
+
+
 
 //  RenderPagination
 function renderPagination() {
